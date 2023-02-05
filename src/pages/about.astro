@@ -1,0 +1,43 @@
+---
+const pageTitle = "私たちについて"
+
+const identity = {
+  firstname: '信彦',
+  lastname: '湯浅',
+  hobbies:["Jazz", "swiming", "Programing"]
+}
+
+const isFree = false
+
+const titleColor = 'purple'
+
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{ pageTitle }</title>
+  <style define:vars={{titleColor}}>
+    h1 {
+      color: var(--titleColor);
+      font-size: 4rem;
+    }
+  </style>
+</head>
+<body>
+ 
+<a href="/">HOME</a>
+<a href="/about">ABOUT</a>
+ <h1>{ pageTitle }</h1>
+ <p>名前</p>
+ <p>{identity.lastname}{identity.firstname}</p>
+<dl>
+  <dt>趣味</dt>
+  <dd>{identity.hobbies.map(hobbie=><p>{hobbie}</p>)}</dd>
+</dl>
+
+{isFree ? <p>お仕事募集中</p>:<p>現在多忙中です</p>}
+</body>
+</html>
