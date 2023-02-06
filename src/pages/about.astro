@@ -1,43 +1,25 @@
 ---
-const pageTitle = "私たちについて"
-
+import BaseLayout from '../layouts/BaseLayout.astro'
+import '../styles/global.css'
+const pageTitle = 'About me'
 const identity = {
-  firstname: '信彦',
-  lastname: '湯浅',
+  firstname: 'Nob',
+  lastname: 'Yuasys',
   hobbies:["Jazz", "swiming", "Programing"]
 }
-
 const isFree = false
-
-const titleColor = 'purple'
-
 ---
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{ pageTitle }</title>
-  <style define:vars={{titleColor}}>
-    h1 {
-      color: var(--titleColor);
-      font-size: 4rem;
-    }
-  </style>
-</head>
-<body>
- 
-<a href="/">HOME</a>
-<a href="/about">ABOUT</a>
- <h1>{ pageTitle }</h1>
- <p>名前</p>
- <p>{identity.lastname}{identity.firstname}</p>
+<BaseLayout pageTitle={pageTitle}>
+ <h1>{pageTitle}</h1>
+ <p>このブログは、Astroを練習するために作りました。<br>
+主に<a href="">このYoutube動画</a>を参考にさせていただきましたことを感謝を込めて報告します。</p>
 <dl>
+  <dt>名前</dt>
+  <dd>{identity.lastname} {identity.firstname}</dd>
   <dt>趣味</dt>
-  <dd>{identity.hobbies.map(hobbie=><p>{hobbie}</p>)}</dd>
+  <dd>{identity.hobbies.map(hobbie=><>{hobbie+' '}</>)}</dd>
 </dl>
 
-{isFree ? <p>お仕事募集中</p>:<p>現在多忙中です</p>}
-</body>
-</html>
+{isFree ? <p>お仕事募集中</p>:<p style="color:red"><b>現在多忙中です</b></p>}
+</BaseLayout>
+  
